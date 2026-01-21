@@ -1,0 +1,27 @@
+# --- MacOS (Finder) ---
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- (uv) ---
+.venv/
+.python-version
+
+# --- IDE ---
+.vscode/
+.idea/
+
+# --- env ---
+.env
+
+# --- models - optional ---
+# models/*.joblib
