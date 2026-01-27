@@ -11,7 +11,7 @@ PROJECT_ROOT = Path(__file__).parent.parent
 DATA_PATH = PROJECT_ROOT / "data" / "car_pricing_amjad_zhour.csv"
 
 print("=" * 80)
-print("KROK 2.2: FEATURE ENGINEERING")
+print("KROK 2.2: FEATURE ENGINEERING - TWORZENIE NOWYCH CECH")
 print("=" * 80)
 print()
 
