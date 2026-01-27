@@ -46,7 +46,7 @@ print("ZASTOSOWANIE ONE-HOT ENCODING")
 print("=" * 80)
 print()
 
-encoder = OneHotEncoder(sparse_output=False, drop='first')  # drop='first' zapobiega multikolinearności
+encoder = OneHotEncoder(sparse_output=False, drop='first')  # drop='first' Usuwa pierwszą kategorie z każdej zmiennej, zapobiega multikolinearności
 encoded_data = encoder.fit_transform(df[categorical_columns])
 
 # Nazwy kolumn po encoding
