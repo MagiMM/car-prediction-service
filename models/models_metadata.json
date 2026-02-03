@@ -1,0 +1,39 @@
+{
+  "price_model": {
+    "file": "price_model.pkl",
+    "type": "RandomForestRegressor",
+    "task": "Regression - Price Prediction",
+    "r2_score": 0.7915,
+    "mae": 1937.17,
+    "rmse": 2388.7,
+    "features": [
+      "Make",
+      "Model",
+      "Year",
+      "Engine Size",
+      "Mileage",
+      "Fuel Type"
+    ],
+    "target": "Price"
+  },
+  "transmission_model": {
+    "file": "transmission_model.pkl",
+    "type": "LogisticRegression",
+    "task": "Classification - Transmission Prediction",
+    "accuracy": 0.475,
+    "f1_score": 0.5116,
+    "features": [
+      "Make",
+      "Model",
+      "Year",
+      "Engine Size",
+      "Mileage",
+      "Fuel Type"
+    ],
+    "target": "Transmission",
+    "classes": [
+      "Automatic",
+      "Manual"
+    ]
+  }
+}
