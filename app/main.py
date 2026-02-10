@@ -50,11 +50,11 @@ async def load_models():
         with open(metadata_path, 'r') as f:
             app.state.models_metadata = json.load(f)
         
-        print("✅ Modele wczytane pomyślnie")
+        print("Models loaded successfully")
         print(f"   - Price model: {price_model_path}")
         print(f"   - Transmission model: {transmission_model_path}")
     except Exception as e:
-        print(f"❌ Błąd wczytywania modeli: {e}")
+        print(f"Error loading models: {e}")
         raise
 
 

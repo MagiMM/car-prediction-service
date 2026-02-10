@@ -67,8 +67,8 @@ async def predict_transmission(car: CarInput, request: Request):
             input_data=car,
             model_info={
                 "model_type": metadata.get('type', 'LogisticRegression'),
-                "accuracy": metadata.get('accuracy', 0.0),
-                "f1_score": metadata.get('f1_score', 0.0),
+                "accuracy": metadata.get('metrics', {}).get('accuracy', 0.0),
+                "f1_score": metadata.get('metrics', {}).get('f1_score', 0.0),
                 "warning": "Model ma niską dokładność (47.5%). Predykcje mogą być nieprecyzyjne."
             }
         )

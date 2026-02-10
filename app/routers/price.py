@@ -55,8 +55,8 @@ async def predict_price(car: CarInput, request: Request):
             input_data=car,
             model_info={
                 "model_type": metadata.get('type', 'RandomForestRegressor'),
-                "r2_score": metadata.get('r2_score', 0.0),
-                "mae": metadata.get('mae', 0.0)
+                "r2_score": metadata.get('metrics', {}).get('r2_score', 0.0),
+                "mae": metadata.get('metrics', {}).get('mae', 0.0)
             }
         )
     

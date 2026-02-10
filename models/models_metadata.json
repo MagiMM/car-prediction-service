@@ -2,10 +2,14 @@
   "price_model": {
     "file": "price_model.pkl",
     "type": "RandomForestRegressor",
-    "task": "Regression - Price Prediction",
-    "r2_score": 0.7915,
-    "mae": 1937.17,
-    "rmse": 2388.7,
+    "task": "Regression",
+    "target": "Price",
+    "metrics": {
+      "r2_score": 0.7915029656675351,
+      "mae": 1937.1665367922471,
+      "rmse": 2388.6968602951742,
+      "relative_error": 7.723208003982737
+    },
     "features": [
       "Make",
       "Model",
@@ -14,14 +18,23 @@
       "Mileage",
       "Fuel Type"
     ],
-    "target": "Price"
+    "n_features": 6
   },
   "transmission_model": {
     "file": "transmission_model.pkl",
     "type": "LogisticRegression",
-    "task": "Classification - Transmission Prediction",
-    "accuracy": 0.475,
-    "f1_score": 0.5116,
+    "task": "Classification",
+    "target": "Transmission",
+    "classes": [
+      "Automatic",
+      "Manual"
+    ],
+    "metrics": {
+      "accuracy": 0.475,
+      "precision": 0.48672566371681414,
+      "recall": 0.5392156862745098,
+      "f1_score": 0.5116279069767442
+    },
     "features": [
       "Make",
       "Model",
@@ -30,10 +43,6 @@
       "Mileage",
       "Fuel Type"
     ],
-    "target": "Transmission",
-    "classes": [
-      "Automatic",
-      "Manual"
-    ]
+    "n_features": 6
   }
 }
