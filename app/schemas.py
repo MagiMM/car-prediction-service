@@ -2,6 +2,7 @@ from pydantic import BaseModel, Field, field_validator
 from typing import Literal
 
 
+# Używane zarówno przez REGRESJA jak i KLASYFIKACJA
 class CarInput(BaseModel):
     """Model wejściowy dla danych o samochodzie"""
     make: Literal['Honda', 'Ford', 'BMW', 'Audi', 'Toyota'] = Field(
@@ -53,6 +54,9 @@ class CarInput(BaseModel):
         }
 
 
+# ============================================================
+# REGRESJA: Response model
+# ============================================================
 class PricePredictionResponse(BaseModel):
     """Odpowiedź z predykcją ceny"""
     predicted_price: float = Field(
@@ -88,6 +92,9 @@ class PricePredictionResponse(BaseModel):
         }
 
 
+# ============================================================
+# KLASYFIKACJA: Response model
+# ============================================================
 class TransmissionPredictionResponse(BaseModel):
     """Odpowiedź z predykcją typu skrzyni biegów"""
     predicted_transmission: Literal['Manual', 'Automatic'] = Field(

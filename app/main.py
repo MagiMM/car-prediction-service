@@ -4,7 +4,8 @@ from pathlib import Path
 import joblib
 import json
 
-from app.routers import price, category
+from app.routers import price  # REGRESJA
+from app.routers import category  # KLASYFIKACJA
 
 # Ścieżki
 BASE_DIR = Path(__file__).parent.parent
@@ -29,8 +30,8 @@ app.add_middleware(
 )
 
 # Zmienne globalne dla modeli
-app.state.price_model = None
-app.state.transmission_model = None
+app.state.price_model = None  # REGRESJA
+app.state.transmission_model = None  # KLASYFIKACJA
 app.state.models_metadata = None
 
 
@@ -39,20 +40,20 @@ async def load_models():
     """Wczytanie modeli przy starcie aplikacji"""
     try:
         # Wczytanie modeli
-        price_model_path = MODELS_DIR / "price_model.pkl"
-        transmission_model_path = MODELS_DIR / "transmission_model.pkl"
+        price_model_path = MODELS_DIR / "price_model.pkl"  # REGRESJA
+        transmission_model_path = MODELS_DIR / "transmission_model.pkl"  # KLASYFIKACJA
         metadata_path = MODELS_DIR / "models_metadata.json"
         
-        app.state.price_model = joblib.load(price_model_path)
-        app.state.transmission_model = joblib.load(transmission_model_path)
+        app.state.price_model = joblib.load(price_model_path)  # REGRESJA
+        app.state.transmission_model = joblib.load(transmission_model_path)  # KLASYFIKACJA
         
         # Wczytanie metadata
         with open(metadata_path, 'r') as f:
             app.state.models_metadata = json.load(f)
         
         print("Models loaded successfully")
-        print(f"   - Price model: {price_model_path}")
-        print(f"   - Transmission model: {transmission_model_path}")
+        print(f"   - Price model: {price_model_path}")  # REGRESJA
+        print(f"   - Transmission model: {transmission_model_path}")  # KLASYFIKACJA
     except Exception as e:
         print(f"Error loading models: {e}")
         raise
@@ -67,8 +68,8 @@ def read_root():
         "endpoints": {
             "docs": "/docs",
             "health": "/health",
-            "predict_price": "/predict-price",
-            "predict_transmission": "/predict-transmission"
+            "predict_price": "/predict-price",  # REGRESJA
+            "predict_transmission": "/predict-transmission"  # KLASYFIKACJA
         }
     }
 
@@ -78,17 +79,17 @@ def health_check():
     """Health check endpoint"""
     models_loaded = (
         app.state.price_model is not None and 
-        app.state.transmission_model is not None
+        app.state.transmission_model is not None  # KLASYFIKACJA
     )
     
     return {
         "status": "healthy" if models_loaded else "unhealthy",
         "models_loaded": models_loaded,
-        "price_model": app.state.price_model is not None,
-        "transmission_model": app.state.transmission_model is not None
+        "price_model": app.state.price_model is not None,  # REGRESJA
+        "transmission_model": app.state.transmission_model is not None  # KLASYFIKACJA
     }
 
 
 # Include routers
-app.include_router(price.router, prefix="/api", tags=["Price Prediction"])
-app.include_router(category.router, prefix="/api", tags=["Transmission Prediction"])
+app.include_router(price.router, prefix="/api", tags=["Price Prediction"])  # REGRESJA
+app.include_router(category.router, prefix="/api", tags=["Transmission Prediction"])  # KLASYFIKACJA

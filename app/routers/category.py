@@ -1,3 +1,6 @@
+# ============================================================
+# KLASYFIKACJA: Endpoint for transmission prediction
+# ============================================================
 from fastapi import APIRouter, HTTPException, Request
 import pandas as pd
 import numpy as np
@@ -7,6 +10,7 @@ from app.schemas import CarInput, TransmissionPredictionResponse
 router = APIRouter()
 
 
+# KLASYFIKACJA: Prediction endpoint
 @router.post("/predict-transmission", response_model=TransmissionPredictionResponse)
 async def predict_transmission(car: CarInput, request: Request):
     """
@@ -29,7 +33,7 @@ async def predict_transmission(car: CarInput, request: Request):
     **Uwaga:** Model ma niską dokładność (47.5%), więc predykcje mogą być nieprecyzyjne.
     """
     try:
-        # Pobranie modelu z app state
+        # KLASYFIKACJA: Pobranie modelu z app state
         model = request.app.state.transmission_model
         metadata = request.app.state.models_metadata.get('transmission_model', {})
         
@@ -49,11 +53,11 @@ async def predict_transmission(car: CarInput, request: Request):
             'Fuel Type': car.fuel_type
         }])
         
-        # Predykcja
+        # KLASYFIKACJA: Predykcja
         prediction = model.predict(input_data)[0]
         probabilities = model.predict_proba(input_data)[0]
         
-        # Mapowanie prawdopodobieństw do klas
+        # KLASYFIKACJA: Mapowanie prawdopodobieństw do klas
         classes = model.classes_
         probability_dict = {
             str(classes[0]): round(float(probabilities[0]), 4),

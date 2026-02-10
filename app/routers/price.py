@@ -1,3 +1,6 @@
+# ============================================================
+# REGRESJA: Endpoint for price prediction
+# ============================================================
 from fastapi import APIRouter, HTTPException, Request
 import pandas as pd
 
@@ -6,6 +9,7 @@ from app.schemas import CarInput, PricePredictionResponse
 router = APIRouter()
 
 
+# REGRESJA: Prediction endpoint
 @router.post("/predict-price", response_model=PricePredictionResponse)
 async def predict_price(car: CarInput, request: Request):
     """
@@ -25,7 +29,7 @@ async def predict_price(car: CarInput, request: Request):
     - model_info: Informacje o modelu ML
     """
     try:
-        # Pobranie modelu z app state
+        # REGRESJA: Pobranie modelu z app state
         model = request.app.state.price_model
         metadata = request.app.state.models_metadata.get('price_model', {})
         
@@ -35,7 +39,7 @@ async def predict_price(car: CarInput, request: Request):
                 detail="Model nie jest dostępny. Sprawdź czy serwis został poprawnie uruchomiony."
             )
         
-        # Przygotowanie danych do predykcji
+        # REGRESJA: Przygotowanie danych do predykcji
         # Uwaga: nazwy kolumn muszą być takie jak podczas treningu
         input_data = pd.DataFrame([{
             'Make': car.make,
@@ -46,7 +50,7 @@ async def predict_price(car: CarInput, request: Request):
             'Fuel Type': car.fuel_type
         }])
         
-        # Predykcja
+        # REGRESJA: Predykcja
         prediction = model.predict(input_data)[0]
         
         # Zwrócenie wyniku
