@@ -8,6 +8,8 @@ Projekt implementuje dwa modele ML:
 - **REGRESJA**: Przewidywanie ceny samochodu (RandomForestRegressor, R² = 79.2%)
 - **KLASYFIKACJA**: Przewidywanie typu skrzyni biegów Manual/Automatic (LogisticRegression, Accuracy = 47.5%)
 
+Specjalnie zaimplementowaliśmy dwa rodzaje modeli (klasyfikację i predykcję), aby każda z osób w zespole mogła poćwiczyć różne techniki uczenia maszynowego i popracować nad częścią projektu niezalenie.
+
 ## Technologie
 
 - **FastAPI** - REST API framework
@@ -244,6 +246,8 @@ Po uruchomieniu serwera, otwórz http://localhost:8000/docs i przetestuj endpoin
 
 MIT
 
-## Autor
+## Autorzy
+
+**Paulina Rzepecka** i **Marcin Magoska**
 
 Projekt ML ISSI - Car Prediction Service
