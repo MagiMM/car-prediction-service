@@ -19,30 +19,5 @@
       "Fuel Type"
     ],
     "n_features": 6
-  },
-  "transmission_model": {
-    "file": "transmission_model.pkl",
-    "type": "LogisticRegression",
-    "task": "Classification",
-    "target": "Transmission",
-    "classes": [
-      "Automatic",
-      "Manual"
-    ],
-    "metrics": {
-      "accuracy": 0.475,
-      "precision": 0.48672566371681414,
-      "recall": 0.5392156862745098,
-      "f1_score": 0.5116279069767442
-    },
-    "features": [
-      "Make",
-      "Model",
-      "Year",
-      "Engine Size",
-      "Mileage",
-      "Fuel Type"
-    ],
-    "n_features": 6
   }
 }
