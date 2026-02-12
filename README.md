@@ -246,4 +246,4 @@ MIT
 
 ## Autor
 
-Projekt ML - Car Prediction Service
+Projekt ML ISSI - Car Prediction Service
