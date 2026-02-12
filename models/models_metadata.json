@@ -19,5 +19,40 @@
       "Fuel Type"
     ],
     "n_features": 6
+  },
+  "transmission_model": {
+    "file": "transmission_model.pkl",
+    "type": "SVM",
+    "task": "Classification",
+    "target": "Transmission",
+    "metrics": {
+      "accuracy": 0.54,
+      "precision": 0.5421022727272726,
+      "recall": 0.54,
+      "f1_score": 0.5383859649122807
+    },
+    "features": [
+      "Make",
+      "Model",
+      "Year",
+      "Engine Size",
+      "Mileage",
+      "Fuel Type",
+      "Price",
+      "Car_Age",
+      "Mileage_Per_Year",
+      "Engine_Category",
+      "Price_Category"
+    ],
+    "n_features": 11,
+    "classes": [
+      "Automatic",
+      "Manual"
+    ],
+    "best_params": {
+      "model__C": 1.0,
+      "model__gamma": "scale",
+      "model__kernel": "linear"
+    }
   }
 }
